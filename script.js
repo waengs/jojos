@@ -1,3 +1,59 @@
+document.addEventListener("DOMContentLoaded", function () {
+    let draggedElement = null;
+
+    function startDrag(event) {
+        draggedElement = event.target;
+        event.target.style.opacity = "0.5";
+    }
+
+    function endDrag(event) {
+        if (draggedElement) {
+            draggedElement.style.opacity = "1";
+            draggedElement = null;
+        }
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        if (draggedElement && event.target.classList.contains("drop-zone")) {
+            event.target.appendChild(draggedElement);
+        }
+    }
+
+    function touchMove(event) {
+        let touch = event.touches[0];
+        let target = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (target && target.classList.contains("drop-zone")) {
+            target.appendChild(draggedElement);
+        }
+    }
+
+    document.querySelectorAll(".puzzle-piece").forEach(piece => {
+        piece.addEventListener("dragstart", startDrag);
+        piece.addEventListener("dragend", endDrag);
+        piece.addEventListener("touchstart", function (event) {
+            event.preventDefault();
+            startDrag(event);
+        });
+        piece.addEventListener("touchmove", function (event) {
+            event.preventDefault();
+            touchMove(event);
+        });
+        piece.addEventListener("touchend", function (event) {
+            event.preventDefault();
+            endDrag(event);
+        });
+    });
+
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+        zone.addEventListener("dragover", function (event) {
+            event.preventDefault();
+        });
+        zone.addEventListener("drop", drop);
+        zone.addEventListener("touchend", drop);
+    });
+});
+
 $(function() {
     let correctWords = ["生", "日", "快", "乐", "umur", "bijak", "kaya", "cantik", "slay"];
     let shuffledWords = [...correctWords].sort(() => Math.random() - 0.5);

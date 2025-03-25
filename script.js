@@ -1,68 +1,24 @@
-document.addEventListener("DOMContentLoaded", function () {
-    let draggedElement = null;
-
-    function startDrag(event) {
-        draggedElement = event.target;
-        draggedElement.classList.add("dragging");
-        event.target.style.opacity = "0.5";
+$(document).ready(function () {
+    if (!$.fn.draggable) {
+        console.error("jQuery UI not loaded! Make sure you included jQuery UI in your HTML.");
+        return;
     }
 
-    function moveDrag(event) {
-        let touch = event.touches ? event.touches[0] : event;
-        draggedElement.style.position = "absolute";
-        draggedElement.style.left = touch.clientX - draggedElement.offsetWidth / 2 + "px";
-        draggedElement.style.top = touch.clientY - draggedElement.offsetHeight / 2 + "px";
-    }
-
-    function endDrag(event) {
-        if (draggedElement) {
-            draggedElement.style.opacity = "1";
-            draggedElement.classList.remove("dragging");
-            draggedElement = null;
-        }
-    }
-
-    function drop(event) {
-        event.preventDefault();
-        if (draggedElement) {
-            let touch = event.touches ? event.changedTouches[0] : event;
-            let target = document.elementFromPoint(touch.clientX, touch.clientY);
-
-            if (target && target.classList.contains("drop-zone")) {
-                target.appendChild(draggedElement);
-            }
-        }
-    }
-
-    document.querySelectorAll(".puzzle-piece").forEach(piece => {
-        piece.addEventListener("dragstart", startDrag);
-        piece.addEventListener("dragend", endDrag);
-        
-        piece.addEventListener("touchstart", function (event) {
-            event.preventDefault();
-            startDrag(event);
-        });
-
-        piece.addEventListener("touchmove", function (event) {
-            event.preventDefault();
-            moveDrag(event);
-        });
-
-        piece.addEventListener("touchend", function (event) {
-            event.preventDefault();
-            drop(event);
-            endDrag(event);
-        });
+    $(".puzzle-piece").draggable({
+        revert: "invalid",
+        containment: "body"
     });
 
-    document.querySelectorAll(".drop-zone").forEach(zone => {
-        zone.addEventListener("dragover", function (event) {
-            event.preventDefault();
-        });
-        zone.addEventListener("drop", drop);
-        zone.addEventListener("touchend", drop);
+    $(".drop-zone").droppable({
+        accept: ".puzzle-piece",
+        drop: function (event, ui) {
+            let droppedText = ui.draggable.text().trim();
+            $(this).text(droppedText);
+            ui.draggable.draggable("disable").hide();
+        }
     });
 });
+
 
 // For word puzzle logic
 $(function() {

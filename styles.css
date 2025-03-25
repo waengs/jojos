@@ -2,11 +2,12 @@ body {
     background-color: #ffe4e1;
     font-family: 'Comic Sans MS', sans-serif;
     text-align: center;
+    line-height: 1.2;
 }
 
 .header {
     padding: 20px;
-    background: #ff69b4;
+    background: #2f5db2;
     color: white;
     font-size: 2em;
 }
@@ -55,17 +56,8 @@ body {
     display: none;
 }
 
-body {
-    background-color: #fde4e4;
-    text-align: center;
-}
 
-.header {
-    font-size: 24px;
-    padding: 10px;
-    background-color: #ff8eb9;
-    color: white;
-}
+
 
 /* Puzzle pieces start in a row */
 .piece-bank {

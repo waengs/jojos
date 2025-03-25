@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Next Puzzle!</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    
+        <!-- ✅ Load jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <!-- ✅ Load Confetti -->
+        <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.0"></script>
+        <!-- ✅ Load Your Script -->
+        <script src="script.js" defer></script>
+    </head>
+<body>
+    <div class="header">🎉 Next Puzzle! 🎂</div>
+    <p>Type the missing words correctly!</p>
+    
+    <p>
+        hepi burthday jojo ❤️! thank you udh jadi 
+        <input type="text" id="word1" class="answer-box"> kita and bikin memori yang buanyak bareng, 
+        entah ketawa nggak jelas di tengah malam, ngomongin hal 
+        <input type="text" id="word2" class="answer-box">, atau sekadar telponan pas malem aja. 
+        kita harus selalu berlima ampe nenek nenek ❤️ HAHAHHA smoga happy mulu, have fun pacaran ama 
+        <input type="text" id="word3" class="answer-box">!!
+    </p>
+
+    <button onclick="checkTextAnswers()">Submit</button>
+    <p class="wrong-message" id="wrongMessageText" style="display: none; color: red;">It's wrong! Try again.</p>
+
+    <script src="script.js"></script>
+</body>
+</html>

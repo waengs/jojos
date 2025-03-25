@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Joseline!</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">🎉 Happy Birthday Joseline! 🎂</div>
+    <p>Drag and drop the missing words into the blanks to complete your birthday messages!</p>
+    
+    <div class="puzzle-container">
+        <p><span class="drop-zone" id="drop1"></span> <span class="drop-zone" id="drop2"></span> <span class="drop-zone" id="drop3"></span> <span class="drop-zone" id="drop4"></span> jojo muach 😘</p>
+        <p>Akhirnya <span class="drop-zone" id="drop5"></span> 2, i jd punya temen 🥰</p>
+        <p>Smoga tambah <span class="drop-zone" id="drop6"></span>, tambah <span class="drop-zone" id="drop7"></span>, tambah <span class="drop-zone" id="drop8"></span>, tambah <span class="drop-zone" id="drop9"></span>!</p>
+    </div>
+
+    <div class="puzzle-container" id="puzzleContainer"></div>
+    <p class="wrong-message" id="wrongMessage">It's wrong!</p>
+    <button onclick="checkWordPuzzle()">Next</button>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.0"></script>
+    <script src="script.js"></script>
+</body>
+</html>

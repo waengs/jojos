@@ -1,0 +1,140 @@
+body {
+    background-color: #ffe4e1;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    text-align: center;
+}
+
+.header {
+    padding: 20px;
+    background: #ff69b4;
+    color: white;
+    font-size: 2em;
+}
+
+.puzzle-container, .image-puzzle-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.puzzle-piece, .image-piece {
+    width: 120px;
+    height: 50px;
+    background: white;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    cursor: grab;
+    border: 2px solid #ff69b4;
+    font-weight: bold;
+}
+
+.drop-zone, .image-drop-zone {
+    width: 130px;
+    height: 50px;
+    border: 2px dashed #ff69b4;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.wrong-message {
+    color: red;
+    font-weight: bold;
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+body {
+    background-color: #fde4e4;
+    text-align: center;
+}
+
+.header {
+    font-size: 24px;
+    padding: 10px;
+    background-color: #ff8eb9;
+    color: white;
+}
+
+/* Puzzle pieces start in a row */
+.piece-bank {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 10px;
+}
+
+/* Dynamic puzzle grid */
+.image-puzzle-container {
+    display: grid;
+    margin: auto;
+    position: relative;
+    gap: 2px;
+    border: 2px solid #ff8eb9;
+    justify-content: center;
+}
+
+/* Puzzle pieces */
+.puzzle-piece {
+    border: 2px solid pink;
+    cursor: grab;
+    background-size: cover;
+}
+
+/* Slots for puzzle pieces */
+.puzzle-slot {
+    border: 2px dashed #ff8eb9;
+    background-color: white;
+}
+
+button {
+    margin-top: 10px;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    background: linear-gradient(45deg, #ff8eb9, #ff6b81);
+    color: white;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+    background: linear-gradient(45deg, #ff6b81, #ff8eb9);
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+input[type="text"] {
+    width: 40%;
+    padding: 7px;
+    font-size: 12px;
+    border: 2px solid #ff8eb9;
+    border-radius: 6px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"]:focus {
+    border-color: #ff6b81;
+    box-shadow: 2px 2px 10px rgba(255, 107, 129, 0.5);
+}

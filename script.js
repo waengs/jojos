@@ -22,7 +22,7 @@ $(document).ready(function () {
 
 // For word puzzle logic
 $(function() {
-    let correctWords = ["生", "日", "快", "乐", "umur", "bijak", "kaya", "cantik", "slay"];
+    let correctWords = ["生", "日", "快", "乐", "kepala", "cantik", "slay", "pinter", "sexy"];
     let shuffledWords = [...correctWords].sort(() => Math.random() - 0.5);
 
     shuffledWords.forEach((word, index) => {
@@ -53,7 +53,7 @@ $(function() {
 });
 
 function checkWordPuzzle() {
-    let correctWords = ["生", "日", "快", "乐", "umur", "bijak", "kaya", "cantik", "slay"];
+    let correctWords = ["生", "日", "快", "乐", "kepala", "cantik", "slay", "pinter", "sexy"];
     let isCorrect = $(".drop-zone").toArray().every((el, i) => $(el).text().trim() === correctWords[i]);
 
     if (isCorrect) {

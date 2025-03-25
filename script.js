@@ -1,3 +1,70 @@
+document.addEventListener("DOMContentLoaded", function () {
+    let draggedElement = null;
+
+    function startDrag(event) {
+        draggedElement = event.target;
+        draggedElement.classList.add("dragging");
+        event.target.style.opacity = "0.5";
+    }
+
+    function moveDrag(event) {
+        let touch = event.touches ? event.touches[0] : event;
+        draggedElement.style.position = "absolute";
+        draggedElement.style.left = touch.clientX - draggedElement.offsetWidth / 2 + "px";
+        draggedElement.style.top = touch.clientY - draggedElement.offsetHeight / 2 + "px";
+    }
+
+    function endDrag(event) {
+        if (draggedElement) {
+            draggedElement.style.opacity = "1";
+            draggedElement.classList.remove("dragging");
+            draggedElement = null;
+        }
+    }
+
+    function drop(event) {
+        event.preventDefault();
+        if (draggedElement) {
+            let touch = event.touches ? event.changedTouches[0] : event;
+            let target = document.elementFromPoint(touch.clientX, touch.clientY);
+
+            if (target && target.classList.contains("drop-zone")) {
+                target.appendChild(draggedElement);
+            }
+        }
+    }
+
+    document.querySelectorAll(".puzzle-piece").forEach(piece => {
+        piece.addEventListener("dragstart", startDrag);
+        piece.addEventListener("dragend", endDrag);
+        
+        piece.addEventListener("touchstart", function (event) {
+            event.preventDefault();
+            startDrag(event);
+        });
+
+        piece.addEventListener("touchmove", function (event) {
+            event.preventDefault();
+            moveDrag(event);
+        });
+
+        piece.addEventListener("touchend", function (event) {
+            event.preventDefault();
+            drop(event);
+            endDrag(event);
+        });
+    });
+
+    document.querySelectorAll(".drop-zone").forEach(zone => {
+        zone.addEventListener("dragover", function (event) {
+            event.preventDefault();
+        });
+        zone.addEventListener("drop", drop);
+        zone.addEventListener("touchend", drop);
+    });
+});
+
+// For word puzzle logic
 $(function() {
     let correctWords = ["生", "日", "快", "乐", "umur", "bijak", "kaya", "cantik", "slay"];
     let shuffledWords = [...correctWords].sort(() => Math.random() - 0.5);

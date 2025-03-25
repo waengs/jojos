@@ -54,6 +54,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+    // Enable jQuery UI Draggable for better cross-device support
+    $(".puzzle-piece").draggable({
+        revert: "invalid",
+        containment: "body",
+        cursor: "move",
+        scroll: false
+    });
+
+    $(".drop-zone").droppable({
+        accept: ".puzzle-piece",
+        drop: function(event, ui) {
+            let droppedElement = ui.draggable;
+            $(this).append(droppedElement);
+            droppedElement.css({
+                top: 0,
+                left: 0,
+                position: "relative"
+            });
+        }
+    });
+});
+
 $(function() {
     let correctWords = ["生", "日", "快", "乐", "umur", "bijak", "kaya", "cantik", "slay"];
     let shuffledWords = [...correctWords].sort(() => Math.random() - 0.5);
